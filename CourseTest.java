@@ -2,36 +2,40 @@ import junit.framework.*;
 
 public class CourseTest extends TestCase {
 	
-	public void testCourse()  {
+	public void testCourse() throws Exception{
+		String id = "23", name = "test";
+		Course x = new Course(id, name);
+		String expected = id + " " + name + "\n" 
+                        + "Professor: "+ x.getProfessor().toString();
+		String actual = x.toString();
+                
+                Assert.assertEquals(expected, actual);	
+	}
+	
+	public void testGetId() throws Exception {
 		String id = "23", name = "test";
 		Course x = new Course(id,name);
-		String expected = id + " " + name;
-		String actual = x.getId() + " " + x.getName();
-		Assert.assertEquals(expected, actual);
 		
+                Assert.assertEquals(id, x.getId());
 	}
 	
-	public void testGetId() {
+	public void testGetName() throws Exception {
 		String id = "23", name = "test";
 		Course x = new Course(id,name);
-		Assert.assertEquals(id, x.getId());
-	}
-	
-	public void testGetName() {
-		String id = "23", name = "test";
-		Course x = new Course(id,name);
+                
 		Assert.assertEquals(name, x.getName());
 	}
 	
-	public void testToString() {
+	public void testToString() throws Exception {
 		String id = "23", name = "test";
 		Course x = new Course(id,name);
 		String actual = x.toString();
-		String expected = id + " " + name;
+		String expected = id + " " + name + "\n" 
+                        + "Professor: "+ x.getProfessor().toString()+"\n";
 		Assert.assertEquals(expected, actual);
 	}
 	
-	public void testEquals() {
+	public void testEquals() throws Exception {
 		String id = "23", name = "test";
 		Course x = new Course(id,name);
 		Course y = new Course("24",name);
@@ -40,16 +44,24 @@ public class CourseTest extends TestCase {
 		
 	}
 	
-	public void testProfessor() {
+	public void testGetProfessor() throws Exception {
 		String id = "23", name = "test";
+		Course x = new Course(id,name);
+                Professor actual = x.getProfessor();
+                Professor expected = new Professor("John","Doe");
+                Assert.assertEquals(expected,actual);
+	}
+        
+        public void testSetProfessor() throws Exception{
+                String id = "23", name = "test";
 		Professor professor = new Professor("some","one");
 		Course x = new Course(id,name);
 		x.setProfessor(professor);
-		Assert.assertSame(professor, x.getProfessor());
-		
-	}
+                
+                Assert.assertEquals(professor, x.getProfessor());
+        }
 	
-	public void testStudent() {
+	public void testStudent() throws Exception {
 		String id = "23", name = "test";
 		Student student = new Student("some","one");
 		Course x = new Course(id,name);

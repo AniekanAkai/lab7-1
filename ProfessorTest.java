@@ -3,12 +3,12 @@ import org.junit.*;
 
 class ProfessorTest extends TestCase{    
     
-    public ProfessorTest(){
+    public void testProfessor() throws Exception{
         String firstName = "Aniekan"; String lastName = "Akai";
         Professor testProf = new Professor(firstName,lastName);
         
         //Correct
-        Assert.assertEquals(firstName+" "+lastName,testProf.toString());
+        Assert.assertEquals(firstName+" "+lastName+" "+"UNKNOWN\n",testProf.toString());
           
         //Wrong 
         Assert.assertEquals(firstName+lastName, testProf.toString());
@@ -18,7 +18,7 @@ class ProfessorTest extends TestCase{
 
     }
  
-    public void testGetOffice(){
+    public void testGetOffice() throws Exception{
         String firstName = "Aniekan"; String lastName = "Akai";
         Professor testProf = new Professor(firstName,lastName);
         
@@ -46,7 +46,7 @@ class ProfessorTest extends TestCase{
 
     }
     
-    public void testSetOffice(){
+    public void testSetOffice() throws Exception{
         String firstName = "Aniekan"; String lastName = "Akai";
         Professor testProf = new Professor(firstName,lastName);
         
@@ -62,5 +62,13 @@ class ProfessorTest extends TestCase{
         Assert.assertEquals("Eng", testProf.getOffice());
     }
     
-    
+    public void testEquals() throws Exception{
+        String firstName = "Aniekan"; String lastName = "Akai";
+        Professor testProf = new Professor(firstName,lastName);
+        Professor testProf1 = new Professor("Carl",lastName);
+        
+        
+        Assert.assertEquals(false, testProf.equals(testProf1));
+        Assert.assertEquals(true, testProf.equals(testProf));
+    }   
 }

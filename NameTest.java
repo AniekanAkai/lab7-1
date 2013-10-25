@@ -14,7 +14,7 @@ public class NameTest extends TestCase {
 		String first = "test", last = "code";
 		Name x = new Name(first,last);
 		Name y = new Name(first,"fail");
-		Assert.assertFalse(x.equals(y));
-		Assert.assertTrue(x.equals(x));
+                Assert.assertEquals(true, x.equals(x));
+                Assert.assertEquals(false, x.equals(y));
 	}
 }
